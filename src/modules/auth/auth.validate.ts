@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import joi from "joi";
 import { StatusCodes } from "http-status-codes";
 
-import { ApiReponse } from "../shared/ApiResponse";
+import { ErrorReponse } from "../shared/ApiResponse";
 
 const validateSignUp = (req: Request, res: Response, next: NextFunction) => {
     const { body } = req;
@@ -43,9 +43,9 @@ const validateSignUp = (req: Request, res: Response, next: NextFunction) => {
 
     const { message } = error.details[0];
 
-    const apiResponse = new ApiReponse(StatusCodes.BAD_REQUEST, false, message);
+    const apiResponse = new ErrorReponse(StatusCodes.BAD_REQUEST, message);
 
-    return res.json(apiResponse);
+    return res.status(apiResponse.statusCode).json(apiResponse);
 };
 
 export const AuthValidate = {

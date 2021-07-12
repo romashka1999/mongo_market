@@ -14,6 +14,7 @@ const getAccountsCollection = () => {
 const connectToDb = async () => {
     const URL = 'mongodb://romashka:pcHg03iGzuYg9PwF@cluster0-shard-00-00.arfwf.mongodb.net:27017,cluster0-shard-00-01.arfwf.mongodb.net:27017,cluster0-shard-00-02.arfwf.mongodb.net:27017?ssl=true&replicaSet=atlas-spkmbx-shard-0&authSource=admin&retryWrites=true&w=majority'
     mongoClient = await MongoClient.connect(URL, {
+        useUnifiedTopology: true,
         useNewUrlParser: true,
         minPoolSize: 0,
         maxPoolSize: 10,

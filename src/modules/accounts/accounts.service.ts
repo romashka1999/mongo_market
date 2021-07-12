@@ -1,4 +1,5 @@
 import { StatusCodes } from "http-status-codes";
+
 import { DB } from "../../db";
 import { AccountSignInDto, AccountSignUpDto } from "../auth/auth.dto";
 import { PasswordUtil } from "../auth/password.util";
@@ -50,7 +51,12 @@ const createAccount = async (accountSignUpDto: AccountSignUpDto): Promise<{ acco
     }
 };
 
+const getAccountProfile = async () => {
+
+}
+
 export const AccountsService = {
     createAccount,
     checkUserExistsByAccountIdentityAndPassword,
+    getAccountProfile,
 };
